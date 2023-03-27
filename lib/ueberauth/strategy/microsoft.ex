@@ -154,4 +154,8 @@ defmodule Ueberauth.Strategy.Microsoft do
     |> options
     |> Keyword.get(key, default)
   end
+  
+  defp with_param(opts, key, conn) do
+    if value = conn.params[to_string(key)], do: Keyword.put(opts, key, value), else: opts
+  end
 end
