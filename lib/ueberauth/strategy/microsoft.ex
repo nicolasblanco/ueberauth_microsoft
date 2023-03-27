@@ -17,7 +17,7 @@ defmodule Ueberauth.Strategy.Microsoft do
     params =
       [scope: scopes, prompt: prompt]
       |> with_scopes(:extra_scopes, conn)
-      |> with_state_param(conn)
+      |> with_param(:state, conn)
 
     opts = oauth_client_options_from_conn(conn)
     redirect!(conn, Ueberauth.Strategy.Microsoft.OAuth.authorize_url!(params, opts))
