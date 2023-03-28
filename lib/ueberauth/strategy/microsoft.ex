@@ -1,7 +1,8 @@
 defmodule Ueberauth.Strategy.Microsoft do
   use Ueberauth.Strategy,
     default_scope: "https://graph.microsoft.com/user.read openid email offline_access",
-    uid_field: :id
+    uid_field: :id,
+    ignores_csrf_attack: true
 
   alias OAuth2.{Response, Error}
   alias Ueberauth.Auth.{Info, Credentials, Extra}
